@@ -5,14 +5,19 @@ import SidebarContext from "../../contexts/SidebarContext";
 import { useState } from "react";
 const DashboardLayout = () => {
   const [collapsed,setCollapsed]=useState(true)
+  const handleSidebar=()=>{
+    setCollapsed(true)
+  }
   return (
-      <SidebarContext.Provider value={{collapsed,setCollapsed}}>
+    <SidebarContext.Provider value={{collapsed,setCollapsed}}>
         <Navbar />
         <div className="dashboard">
           <Sidebar />
-          <Outlet />
+          <div className="content" onClick={handleSidebar}>
+          <Outlet/>
+          </div>
         </div>
-      </SidebarContext.Provider>
+    </SidebarContext.Provider>
   );
 };
 export default DashboardLayout;
