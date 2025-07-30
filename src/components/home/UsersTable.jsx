@@ -1,0 +1,74 @@
+function UsersTable() {
+  return ( 
+            <div className="usersTable">
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  #
+                </th>
+                <th>
+                  category
+                </th>
+                <th>
+                  title
+                </th>
+                <th>
+                  details
+                </th>
+                <th>
+                  actions
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>test</td>
+                <td>test</td>
+                <td>test</td>
+                <td>❌</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>test</td>
+                <td>test</td>
+                <td>test</td>
+                <td>❌</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>test</td>
+                <td>test</td>
+                <td>test</td>
+                <td>❌</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>test</td>
+                <td>test</td>
+                <td>test</td>
+                <td>❌</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>test</td>
+                <td>test</td>
+                <td>test</td>
+                <td>❌</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>test</td>
+                <td>test</td>
+                <td>test</td>
+                <td>❌</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+  );
+}
+
+export default UsersTable;
