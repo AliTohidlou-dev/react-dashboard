@@ -48,9 +48,11 @@ function Chart() {
   };
 
   return (
+            <div className="chart">
     <div style={{ width: "100%", height: "400px" }}>
       <Line data={chartData} options={chartOptions} />
     </div>
+        </div>
   );
 }
 

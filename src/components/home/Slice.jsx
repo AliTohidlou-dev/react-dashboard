@@ -6,7 +6,7 @@ function Slice({num,title,icon,weeklySummery,monthlySummery}) {
           <p>{num}</p>
           <p>{title}</p>
         </div>
-        <i class={icon}></i>
+        <i className={icon}></i>
       </div>
       <div className="box-down">
         <p>{weeklySummery}</p>
