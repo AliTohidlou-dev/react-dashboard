@@ -6,6 +6,7 @@ import Signup from "./auth/Signup";
 import ForgotPassword from "./auth/ForgetPassword";
 import Home from "../pages/Home";
 import Categories from "../pages/Categories";
+import AddCategory from "../pages/AddCategory";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
       </Route>
       <Route path="/categories" element={<DashboardLayout />}>
         <Route index element={<Categories/>} />
+        <Route path="add-category" element={<AddCategory/>} />
       </Route>
       <Route path="/users" element={<DashboardLayout />}>
         <Route index element={<p>users</p>} />

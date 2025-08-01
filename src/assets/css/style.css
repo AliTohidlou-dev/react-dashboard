@@ -538,12 +538,12 @@ tr:hover {
   width: 35px;
   height: 35px;
   cursor: pointer;
-  border: 1px solid #00c6ff;
-  background: linear-gradient(to right, #00c6ff, #60a5f9);
+  border: 1px solid #00c8ff96;
+  background: linear-gradient(to right, #00c8ff96, #60a5f98b);
   border-radius: 10px;
 }
 .header .add:hover {
-  background: linear-gradient(to right, #60a5f9, #00c6ff);
+  background: linear-gradient(to right, #60a5f9a0, #00c8ffb0);
 }
 .edit-table {
   width: 100%;
@@ -575,16 +575,155 @@ tr .actions-btn i:nth-child(4) {
   margin-top: auto;
   gap: 10px;
 }
-.pagination button{
+.pagination button {
   padding: 5px;
   border: 1px solid #aaa;
   border-radius: 10px;
   cursor: pointer;
 }
-.pagination button:hover{
+.pagination button:hover {
   transform: translateY(-2px);
 }
 /* Pages-section-end */
+/* Add-Category-start */
+.add-category {
+  width: 100dvw;
+  height: 100dvh;
+  position: fixed;
+  top: 0;
+  inset-inline-start: 0;
+  background-color: #f9fafb;
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  overflow-y: scroll;
+}
+.add-category-header {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 1.5rem;
+  height: 4rem;
+  align-items: center;
+  box-shadow: 0 0 20px black;
+  border-radius: 0 0 10px 10px;
+  background-color: white;
+}
+.add-category-header h1 {
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #374151;
+}
+.add-category-header i {
+  padding-bottom: 1rem;
+  font-size: larger;
+  color: #585858;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.add-category-header i:hover {
+  color: #ef4444;
+}
+
+.add-category-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 2rem auto;
+  width: 90%;
+  max-width: 600px;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+}
+.input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.add-category-form .input {
+  display: flex;
+}
+.add-category-form .input label {
+  width: 7.6rem;
+  background-color: #e5e7eb;
+  border-radius: 0.5rem 0 0 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem;
+  font-weight: 500;
+  color: #374151;
+}
+.add-category-form .input input,
+.add-category-form .input textarea {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  padding: 0.6rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  outline: none;
+  transition: border 0.2s ease;
+}
+.add-category-form .input textarea {
+  border-radius: 0 0.5rem 0.5rem 0;
+  resize: vertical;
+  min-height: 120px;
+}
+.add-category-form .input input:focus,
+.add-category-form .input textarea:focus {
+  border-color: #3b82f6;
+}
+
+.add-category-form .input input[type="file"] {
+  position: absolute;
+  width: 500px;
+  padding-inline-start: 150px;
+  border: none;
+  opacity: 0;
+  cursor: pointer;
+}
+.add-category-form .input span {
+  width: 100%;
+  text-align: start;
+  padding: 0.6rem;
+  color: #aaa;
+  border: 1px dashed #9ca3af;
+  background-color: #f3f4f6;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+.add-category-form .submitBtn {
+  display: flex;
+  justify-content: center;
+}
+
+.add-category-form .submitBtn button {
+  padding: 0.75rem 2rem;
+  background: linear-gradient(to right, #06b6d4, #3b82f6);
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.add-category-form .submitBtn button:hover {
+  background: linear-gradient(to right, #0891b2, #2563eb);
+}
+.add-category-form .submitBtn button:disabled {
+  background: linear-gradient(to right, #9ca3af, #cbd5e1);
+  cursor: not-allowed;
+}
+
+.errorMsg {
+  color: #ef4444;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* Add-Category-end */
 @media (max-width: 768px) {
   .auth-container {
     flex-direction: column;
