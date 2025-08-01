@@ -5,6 +5,7 @@ import Login from "./auth/Login";
 import Signup from "./auth/Signup";
 import ForgotPassword from "./auth/ForgetPassword";
 import Home from "../pages/Home";
+import Categories from "../pages/Categories";
 
 const App = () => {
   return (
@@ -16,6 +17,9 @@ const App = () => {
       </Route>
       <Route path="/home" element={<DashboardLayout />}>
         <Route index element={<Home />} />
+      </Route>
+      <Route path="/categories" element={<DashboardLayout />}>
+        <Route index element={<Categories/>} />
       </Route>
       <Route path="/users" element={<DashboardLayout />}>
         <Route index element={<p>users</p>} />

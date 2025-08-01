@@ -8,16 +8,16 @@ function UsersTable() {
                   #
                 </th>
                 <th>
-                  category
+                  Category
                 </th>
                 <th>
-                  title
+                  Title
                 </th>
                 <th>
-                  details
+                  Details
                 </th>
                 <th>
-                  actions
+                  Actions
                 </th>
               </tr>
             </thead>
