@@ -34,98 +34,101 @@ const validate = yup.object({
 function AddCategory({ onClose }) {
   return (
     <AddModal>
-          <div className="add-category">
-      <div className="add-category-header">
-        <h1>Add Category</h1>
-        <Link to={"/categories"}>
-          <i className="fa-solid fa-xmark" onClick={onClose}></i>
-        </Link>
-      </div>
-      <Formik
-        initialValues={initialValues}
-        onSubmit={onSubmit}
-        validationSchema={validate}
-      >
-        {(formik) => {
-          console.log(formik.errors);
-          return (
-            <Form className="add-category-form">
-              <div className="input-section">
-                <div className="input">
-                  <label htmlFor="parentCategory">Parent Category</label>
-                  <FastField
-                    type="text"
+      <div className="add-category">
+        <div className="add-category-header">
+          <h1>Add Category</h1>
+          <Link to={"/categories"}>
+            <i className="fa-solid fa-xmark" onClick={onClose}></i>
+          </Link>
+        </div>
+        <Formik
+          initialValues={initialValues}
+          onSubmit={onSubmit}
+          validationSchema={validate}
+        >
+          {(formik) => {
+            console.log(formik.errors);
+            return (
+              <Form className="add-category-form">
+                <div className="input-section">
+                  <div className="input">
+                    <label htmlFor="parentCategory">Parent Category</label>
+                    <FastField
+                      type="text"
+                      name="parentCategory"
+                      id="parentCategory"
+                      placeholder="parent category"
+                    />
+                  </div>
+                  <ErrorMessage
                     name="parentCategory"
-                    id="parentCategory"
-                    placeholder="parent category"
+                    component={ErrorHandler}
                   />
                 </div>
-                <ErrorMessage name="parentCategory" component={ErrorHandler} />
-              </div>
-              <div className="input-section">
-                <div className="input">
-                  <label htmlFor="title">Title</label>
-                  <FastField
-                    type="text"
-                    name="title"
-                    id="title"
-                    placeholder="title"
-                  />
+                <div className="input-section">
+                  <div className="input">
+                    <label htmlFor="title">Title</label>
+                    <FastField
+                      type="text"
+                      name="title"
+                      id="title"
+                      placeholder="title"
+                    />
+                  </div>
+                  <ErrorMessage name="title" component={ErrorHandler} />
                 </div>
-                <ErrorMessage name="title" component={ErrorHandler} />
-              </div>
-              <div className="input-section">
-                <div className="input">
-                  <label htmlFor="caption">Caption</label>
-                  <FastField
-                    as="textarea"
-                    name="caption"
-                    id="caption"
-                    placeholder="caption"
-                  />
+                <div className="input-section">
+                  <div className="input">
+                    <label htmlFor="caption">Caption</label>
+                    <FastField
+                      as="textarea"
+                      name="caption"
+                      id="caption"
+                      placeholder="caption"
+                    />
+                  </div>
+                  <ErrorMessage name="caption" component={ErrorHandler} />
                 </div>
-                <ErrorMessage name="caption" component={ErrorHandler} />
-              </div>
-              <div className="input-section">
-                <div className="input">
-                  <label htmlFor="image">image</label>
-                  <input
-                    type="file"
-                    name="image"
-                    id="image"
-                    onChange={(e) =>
-                      formik.setFieldValue("image", e.target.files[0])
+                <div className="input-section">
+                  <div className="input">
+                    <label htmlFor="image">image</label>
+                    <input
+                      type="file"
+                      name="image"
+                      id="image"
+                      onChange={(e) =>
+                        formik.setFieldValue("image", e.target.files[0])
+                      }
+                    />
+                    <span>{formik.values.image?.name || "add image"}</span>
+                  </div>
+                  {formik.errors.image ? (
+                    <p className="errorMsg">
+                      <i className="fas fa-exclamation"></i>
+                      {formik.errors.image}
+                    </p>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                <div className="submitBtn">
+                  <button
+                    type="submit"
+                    disabled={
+                      !(formik.dirty && formik.isValid) || formik.isSubmitting
+                        ? true
+                        : false
                     }
-                  />
-                  <span>{formik.values.image?.name || "add image"}</span>
+                  >
+                    Submit
+                  </button>
                 </div>
-                {formik.errors.image ? (
-                  <p className="errorMsg">
-                    <i className="fas fa-exclamation"></i>
-                    {formik.errors.image}
-                  </p>
-                ) : (
-                  ""
-                )}
-              </div>
-              <div className="submitBtn">
-                <button
-                  type="submit"
-                  disabled={
-                    !(formik.dirty && formik.isValid) || formik.isSubmitting
-                      ? true
-                      : false
-                  }
-                >
-                  Submit
-                </button>
-              </div>
-            </Form>
-          );
-        }}
-      </Formik>
-    </div> 
+              </Form>
+            );
+          }}
+        </Formik>
+      </div>
     </AddModal>
-   );
+  );
 }
 export default AddCategory;

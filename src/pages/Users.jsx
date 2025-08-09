@@ -1,19 +1,19 @@
-import ActionCategoriesComponent from "../components/categories/ActionCategoriesComponent";
+import { useState } from "react";
 import PaginationTable from "../utils/PaginationTable";
-import SearchBar from "../utils/searchBar";
+import { Link } from "react-router-dom";
 
 function Users() {
-      const data = [
+  const data = [
     {
       username: "one",
       email: "test@gmail.com",
     },
     {
-      username: "one",
+      username: "two",
       email: "test@gmail.com",
     },
     {
-      username: "one",
+      username: "three",
       email: "test@gmail.com",
     },
     {
@@ -43,13 +43,38 @@ function Users() {
     title: "Actions",
     element: (id) => additionalElement(id),
   };
-
-
+  const [searchInput, setSearchInput] = useState("");
+  const handleSearch = (value) => {
+    if (value) {
+      setSearchInput(value);
+    } else {
+      setSearchInput("");
+    }
+  };
   return (
     <div className="edit-pages">
       <h1>Users</h1>
-      <SearchBar link={"/users/add-user"} />
-      <PaginationTable data={data} dataInfo={dataInfo} additionalField={additionalField}/>
+      <div className="header">
+        <div className="search-bar">
+          <label htmlFor="searchBar">Search</label>
+          <input
+            id="searchBar"
+            name="searchBar"
+            onChange={(e) => handleSearch(e.target.value)}
+            value={searchInput}
+          />
+        </div>
+        <Link to={"/categories/add-category"}>
+          <button className="add">+</button>
+        </Link>
+      </div>
+      <PaginationTable
+        data={data}
+        dataInfo={dataInfo}
+        additionalField={additionalField}
+        search={searchInput}
+        searchBy={"username"}
+      />
     </div>
   );
 }

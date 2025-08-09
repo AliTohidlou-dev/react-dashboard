@@ -1,46 +1,46 @@
-import ActionCategoriesComponent from "../components/categories/ActionCategoriesComponent";
+import { useState } from "react";
 import PaginationTable from "../utils/PaginationTable";
-import SearchBar from "../utils/searchBar";
+import { Link } from "react-router-dom";
 
 function Categories() {
-      const data = [
+  const data = [
     {
-      id:1,
+      id: 1,
       title: "one",
       status: "active",
     },
     {
-      id:1,
+      id: 1,
       title: "two",
       status: "active",
     },
     {
-      id:1,
+      id: 1,
       title: "three",
       status: "active",
     },
     {
-      id:1,
+      id: 1,
       title: "four",
       status: "active",
     },
     {
-      id:1,
+      id: 1,
       title: "five",
       status: "active",
     },
     {
-      id:1,
+      id: 1,
       title: "six",
       status: "active",
     },
     {
-      id:1,
+      id: 1,
       title: "a",
       status: "active",
     },
     {
-      id:1,
+      id: 1,
       title: "b",
       status: "active",
     },
@@ -64,12 +64,39 @@ function Categories() {
     element: (id) => additionalElement(id),
   };
 
-
+  const [searchInput, setSearchInput] = useState("");
+  const handleSearch = (value) => {
+    if (value) {
+      setSearchInput(value);
+    } else {
+      setSearchInput("");
+    }
+  };
   return (
     <div className="edit-pages">
       <h1>Categories</h1>
-      <SearchBar link={"/categories/add-category"} />
-      <PaginationTable data={data} dataInfo={dataInfo} additionalField={additionalField}/>
+      <div className="header">
+        <div className="search-bar">
+          <label htmlFor="searchBar">Search</label>
+          <input
+            id="searchBar"
+            name="searchBar"
+            onChange={(e) => handleSearch(e.target.value)}
+            value={searchInput}
+          />
+        </div>
+        <Link to={"/categories/add-category"}>
+          <button className="add">+</button>
+        </Link>
+      </div>
+
+      <PaginationTable
+        data={data}
+        dataInfo={dataInfo}
+        additionalField={additionalField}
+        search={searchInput}
+        searchBy={'title'}
+      />
     </div>
   );
 }

@@ -1,16 +1,26 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
-function PaginationTable({ data, dataInfo,additionalField }) {
+function PaginationTable({ data, dataInfo, additionalField, search ,searchBy}) {
   const [currentPage, setCurrentPage] = useState(1);
   const [tableData, setTableData] = useState(data);
+  const [currentData,setCurrentData]=useState(tableData)
   const limit = 4;
-  const totalPages = Math.ceil(data.length / limit);
+  const totalPages = Math.ceil(tableData.length / limit);
+    useEffect(() => {
+    console.log(search);
+    if (search.length >= 1) {
+      setTableData(data.filter((d) => d[searchBy].includes(search)));
+      setCurrentPage(1);
+    }else{
+      setTableData(data)
+    }
+  }, [search,data,searchBy]);
+
   useEffect(() => {
     const skip = (currentPage - 1) * limit;
-    setTableData(data.slice(skip, skip + limit));
-  }, [currentPage, data]);
-
+    setCurrentData(tableData.slice(skip, skip + limit));
+  }, [currentPage, tableData]);
   return (
     <>
       <div className="edit-table">
@@ -25,13 +35,17 @@ function PaginationTable({ data, dataInfo,additionalField }) {
             </tr>
           </thead>
           <tbody>
-            {tableData?.map((d, index) => (
+            {currentData?.map((d, index) => (
               <tr key={index}>
                 <td>{(currentPage - 1) * limit + index + 1}</td>
                 {dataInfo?.map((info) => (
                   <td key={info.field + d.title}>{d[info.field]}</td>
                 ))}
-                {additionalField&&<td className="actions-btn">{additionalField.element(d.id)}</td>}
+                {additionalField && (
+                  <td className="actions-btn">
+                    {additionalField.element(d.id)}
+                  </td>
+                )}
               </tr>
             ))}
           </tbody>
