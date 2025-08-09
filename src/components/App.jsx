@@ -7,6 +7,7 @@ import ForgotPassword from "./auth/ForgetPassword";
 import Home from "../pages/Home";
 import Categories from "../pages/Categories";
 import AddCategory from "../pages/AddCategory";
+import Users from "../pages/Users";
 
 const App = () => {
   return (
@@ -24,7 +25,8 @@ const App = () => {
         <Route path="add-category" element={<AddCategory/>} />
       </Route>
       <Route path="/users" element={<DashboardLayout />}>
-        <Route index element={<p>users</p>} />
+        <Route index element={<Users/>} />
+        <Route path="add-user" element={<p>add user</p>}/>
         <Route path=":id" element={<p>hi</p>}/>
       </Route>
       <Route path="*" element={<div>404 Not Found</div>} />

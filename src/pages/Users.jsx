@@ -2,52 +2,32 @@ import ActionCategoriesComponent from "../components/categories/ActionCategories
 import PaginationTable from "../utils/PaginationTable";
 import SearchBar from "../utils/searchBar";
 
-function Categories() {
+function Users() {
       const data = [
     {
-      id:1,
-      title: "one",
-      status: "active",
+      username: "one",
+      email: "test@gmail.com",
     },
     {
-      id:1,
-      title: "two",
-      status: "active",
+      username: "one",
+      email: "test@gmail.com",
     },
     {
-      id:1,
-      title: "three",
-      status: "active",
+      username: "one",
+      email: "test@gmail.com",
     },
     {
-      id:1,
-      title: "four",
-      status: "active",
+      username: "one",
+      email: "test@gmail.com",
     },
     {
-      id:1,
-      title: "five",
-      status: "active",
-    },
-    {
-      id:1,
-      title: "six",
-      status: "active",
-    },
-    {
-      id:1,
-      title: "a",
-      status: "active",
-    },
-    {
-      id:1,
-      title: "b",
-      status: "active",
+      username: "one",
+      email: "test@gmail.com",
     },
   ];
   const dataInfo = [
-    { field: "title", title: "Title" },
-    { field: "status", title: "Status" },
+    { field: "username", title: "username" },
+    { field: "email", title: "email" },
   ];
   const additionalElement = () => {
     return (
@@ -67,11 +47,11 @@ function Categories() {
 
   return (
     <div className="edit-pages">
-      <h1>Categories</h1>
-      <SearchBar link={"/categories/add-category"} />
+      <h1>Users</h1>
+      <SearchBar link={"/users/add-user"} />
       <PaginationTable data={data} dataInfo={dataInfo} additionalField={additionalField}/>
     </div>
   );
 }
 
-export default Categories;
+export default Users;
