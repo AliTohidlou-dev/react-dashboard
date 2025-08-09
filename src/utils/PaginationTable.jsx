@@ -1,15 +1,13 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
-function PaginationTable({ data, dataInfo }) {
+function PaginationTable({children, data, dataInfo }) {
   const [currentPage,setCurrentPage]=useState(1);
   const [tableData,setTableData]=useState(data);
   const limit=4;
   const totalPages=Math.ceil(data.length/limit);
   useEffect(()=>{
-    const skip=(currentPage-1)*limit;
-    console.log(skip+limit);
-    
+    const skip=(currentPage-1)*limit;    
     setTableData(data.slice(skip,skip+limit))
   },[currentPage,data])
 
@@ -20,7 +18,7 @@ function PaginationTable({ data, dataInfo }) {
           <thead>
             <tr>
               {dataInfo?.map((info) => (
-                <th key={Math.random()}>{info.title}</th>
+                <th key={info.field}>{info.title}</th>
               ))}
             </tr>
           </thead>
@@ -31,10 +29,7 @@ function PaginationTable({ data, dataInfo }) {
                 <td>{d.title}</td>
                 <td>{d.status}</td>
                 <td className="actions-btn">
-                  <i className="fa-solid fa-share-nodes"></i>
-                  <i className="fa-solid fa-pen-to-square"></i>
-                  <i className="fa-solid fa-plus"></i>
-                  <i className="fa-solid fa-trash"></i>
+                  {children}
                 </td>
               </tr>
             ))}

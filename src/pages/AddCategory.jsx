@@ -1,8 +1,8 @@
 import { ErrorMessage, FastField, Form, Formik } from "formik";
-import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
 import ErrorHandler from "../utils/errorHandler";
+import AddModal from "../utils/AddModal";
 const initialValues = {
   parentCategory: "",
   title: "",
@@ -32,8 +32,9 @@ const validate = yup.object({
     }),
 });
 function AddCategory({ onClose }) {
-  return createPortal(
-    <div className="add-category">
+  return (
+    <AddModal>
+          <div className="add-category">
       <div className="add-category-header">
         <h1>Add Category</h1>
         <Link to={"/categories"}>
@@ -123,8 +124,8 @@ function AddCategory({ onClose }) {
           );
         }}
       </Formik>
-    </div>,
-    document.body
-  );
+    </div> 
+    </AddModal>
+   );
 }
 export default AddCategory;

@@ -1,4 +1,5 @@
-import PaginationTable from "../components/categories/PaginationTable";
+import ActionCategoriesComponent from "../components/categories/ActionCategoriesComponent";
+import PaginationTable from "../utils/PaginationTable";
 import SearchBar from "../utils/searchBar";
 
 function Categories() {
@@ -48,7 +49,9 @@ function Categories() {
     <div className="edit-pages">
       <h1>Categories</h1>
       <SearchBar link={"/categories/add-category"} />
-      <PaginationTable data={data} dataInfo={dataInfo}/>
+      <PaginationTable data={data} dataInfo={dataInfo}>
+          <ActionCategoriesComponent />
+      </PaginationTable>
     </div>
   );
 }
