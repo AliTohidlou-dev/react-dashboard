@@ -1,21 +1,26 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
-function PaginationTable({ data, dataInfo, additionalField, search ,searchBy}) {
+function PaginationTable({
+  data,
+  dataInfo,
+  additionalField,
+  search,
+  searchBy,
+}) {
   const [currentPage, setCurrentPage] = useState(1);
   const [tableData, setTableData] = useState(data);
-  const [currentData,setCurrentData]=useState(tableData)
+  const [currentData, setCurrentData] = useState(tableData);
   const limit = 4;
   const totalPages = Math.ceil(tableData.length / limit);
-    useEffect(() => {
-    console.log(search);
+  useEffect(() => {
     if (search.length >= 1) {
       setTableData(data.filter((d) => d[searchBy].includes(search)));
       setCurrentPage(1);
-    }else{
-      setTableData(data)
+    } else {
+      setTableData(data);
     }
-  }, [search,data,searchBy]);
+  }, [search, data, searchBy]);
 
   useEffect(() => {
     const skip = (currentPage - 1) * limit;

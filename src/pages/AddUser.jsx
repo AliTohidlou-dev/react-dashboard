@@ -4,22 +4,22 @@ import * as yup from "yup";
 import ErrorHandler from "../utils/errorHandler";
 import AddModal from "../utils/AddModal";
 const initialValues = {
-  parentCategory: "",
-  title: "",
-  caption: "",
-  image: null,
+  email: "",
+  username: "",
+  mobile: "",
+  profileImage: null,
 };
 const onSubmit = (values) => {
   console.log(values);
 };
 const validate = yup.object({
-  parentCategory: yup.string().required("required").min(3, "at least 3 words"),
-  title: yup.string().required("required").min(3, "at least 3 words"),
-  caption: yup
+  email: yup.string().email('email is invalid').required("required"),
+  username: yup.string().required("required").min(3, "at least 3 words"),
+  mobile: yup
     .string()
     .required("required")
-    .matches(/^[\p{L}\p{N} ]+$/u, "only word and number"),
-  image: yup
+    .matches(/^(=?09)(=?[0-9]){2}(=?[0-9]){7}$/, "invalid mobile number"),
+  profileImage: yup
     .mixed()
     .required("image is required")
     .test("imageType", "only png, jpeg", (value) => {
@@ -31,15 +31,14 @@ const validate = yup.object({
       return value.size <= 300 * 1024;
     }),
 });
-function AddCategory() {
-    const {id}=useParams()
-
+function AddUser() {
+  const {id}=useParams();
   return (
     <AddModal>
       <div className="add-category">
         <div className="add-category-header">
-          <h1>{id?'Edit Category':'Add Category'}</h1>
-          <Link to={"/categories"}>
+          <h1>{id?'Edit User':'Add User'}</h1>
+          <Link to={"/users"}>
             <i className="fa-solid fa-xmark" ></i>
           </Link>
         </div>
@@ -54,60 +53,60 @@ function AddCategory() {
               <Form className="add-category-form">
                 <div className="input-section">
                   <div className="input">
-                    <label htmlFor="parentCategory">Parent Category</label>
+                    <label htmlFor="email">Email</label>
                     <FastField
                       type="text"
-                      name="parentCategory"
-                      id="parentCategory"
-                      placeholder="parent category"
+                      name="email"
+                      id="email"
+                      placeholder="email"
                     />
                   </div>
                   <ErrorMessage
-                    name="parentCategory"
+                    name="email"
                     component={ErrorHandler}
                   />
                 </div>
                 <div className="input-section">
                   <div className="input">
-                    <label htmlFor="title">Title</label>
+                    <label htmlFor="username">username</label>
                     <FastField
                       type="text"
-                      name="title"
-                      id="title"
-                      placeholder="title"
+                      name="username"
+                      id="username"
+                      placeholder="username"
                     />
                   </div>
-                  <ErrorMessage name="title" component={ErrorHandler} />
+                  <ErrorMessage name="username" component={ErrorHandler} />
                 </div>
                 <div className="input-section">
                   <div className="input">
-                    <label htmlFor="caption">Caption</label>
+                    <label htmlFor="mobile">Mobile</label>
                     <FastField
-                      as="textarea"
-                      name="caption"
-                      id="caption"
-                      placeholder="caption"
+                      type="number"
+                      name="mobile"
+                      id="mobile"
+                      placeholder="mobile"
                     />
                   </div>
-                  <ErrorMessage name="caption" component={ErrorHandler} />
+                  <ErrorMessage name="mobile" component={ErrorHandler} />
                 </div>
                 <div className="input-section">
                   <div className="input">
-                    <label htmlFor="image">image</label>
+                    <label htmlFor="profileImage">Profile Image</label>
                     <input
                       type="file"
-                      name="image"
-                      id="image"
+                      name="profileImage"
+                      id="profileImage"
                       onChange={(e) =>
-                        formik.setFieldValue("image", e.target.files[0])
+                        formik.setFieldValue("profileImage", e.target.files[0])
                       }
                     />
-                    <span>{formik.values.image?.name || "add image"}</span>
+                    <span>{formik.values.profileImage?.name || "add image"}</span>
                   </div>
-                  {formik.errors.image ? (
+                  {formik.errors.profileImage ? (
                     <p className="errorMsg">
                       <i className="fas fa-exclamation"></i>
-                      {formik.errors.image}
+                      {formik.errors.profileImage}
                     </p>
                   ) : (
                     ""
@@ -133,4 +132,4 @@ function AddCategory() {
     </AddModal>
   );
 }
-export default AddCategory;
+export default AddUser;

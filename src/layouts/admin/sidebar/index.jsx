@@ -8,7 +8,7 @@ function Sidebar() {
   return (
     <aside className={collapsed ? "sidebar collapsed" : "sidebar"}>
       <div className="nav-links">
-             <NavLink className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} to="/home">
+      <NavLink className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} to="/home">
         <i className="fas fa-home"></i>
         {!collapsed && <span>Home</span>}
       </NavLink>

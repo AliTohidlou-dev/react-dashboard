@@ -8,6 +8,7 @@ import Home from "../pages/Home";
 import Categories from "../pages/Categories";
 import AddCategory from "../pages/AddCategory";
 import Users from "../pages/Users";
+import AddUser from "../pages/AddUser";
 
 const App = () => {
   return (
@@ -23,11 +24,12 @@ const App = () => {
       <Route path="/categories" element={<DashboardLayout />}>
         <Route index element={<Categories/>} />
         <Route path="add-category" element={<AddCategory/>} />
+        <Route path="/categories/add-category/:id" element={<AddCategory/>}/>
       </Route>
       <Route path="/users" element={<DashboardLayout />}>
         <Route index element={<Users/>} />
-        <Route path="add-user" element={<p>add user</p>}/>
-        <Route path=":id" element={<p>hi</p>}/>
+        <Route path="add-user" element={<AddUser/>}/>
+        <Route path="/users/add-user/:id" element={<AddUser/>}/>
       </Route>
       <Route path="*" element={<div>404 Not Found</div>} />
     </Routes>

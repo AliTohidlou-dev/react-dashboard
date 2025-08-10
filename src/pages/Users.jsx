@@ -1,26 +1,32 @@
 import { useState } from "react";
 import PaginationTable from "../utils/PaginationTable";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Users() {
+  const navigate=useNavigate();
   const data = [
-    {
+    { 
+      id: 1,
       username: "one",
       email: "test@gmail.com",
     },
     {
+      id: 2,
       username: "two",
       email: "test@gmail.com",
     },
     {
+      id: 3,
       username: "three",
       email: "test@gmail.com",
     },
     {
+      id:4,
       username: "one",
       email: "test@gmail.com",
     },
     {
+      id:5,
       username: "one",
       email: "test@gmail.com",
     },
@@ -29,11 +35,14 @@ function Users() {
     { field: "username", title: "username" },
     { field: "email", title: "email" },
   ];
-  const additionalElement = () => {
+  const handleEdit=(id)=>{
+    navigate(`/users/add-user/${id}`)
+  }
+  const additionalElement = (id) => {
     return (
       <>
         <i className="fa-solid fa-share-nodes"></i>
-        <i className="fa-solid fa-pen-to-square"></i>
+        <i className="fa-solid fa-pen-to-square" onClick={()=> handleEdit(id)}></i>
         <i className="fa-solid fa-plus"></i>
         <i className="fa-solid fa-trash"></i>
       </>
@@ -64,7 +73,7 @@ function Users() {
             value={searchInput}
           />
         </div>
-        <Link to={"/categories/add-category"}>
+        <Link to={"/users/add-user"}>
           <button className="add">+</button>
         </Link>
       </div>

@@ -1,8 +1,9 @@
 import { useState } from "react";
 import PaginationTable from "../utils/PaginationTable";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Categories() {
+  const navigate = useNavigate();
   const data = [
     {
       id: 1,
@@ -49,11 +50,14 @@ function Categories() {
     { field: "title", title: "Title" },
     { field: "status", title: "Status" },
   ];
-  const additionalElement = () => {
+  const handleEdit = (id) =>{
+    navigate(`/categories/add-category/${id}`)
+  }
+  const additionalElement = (id) => {
     return (
       <>
         <i className="fa-solid fa-share-nodes"></i>
-        <i className="fa-solid fa-pen-to-square"></i>
+        <i className="fa-solid fa-pen-to-square" onClick={()=>handleEdit(id)}></i>
         <i className="fa-solid fa-plus"></i>
         <i className="fa-solid fa-trash"></i>
       </>
